@@ -38,6 +38,7 @@ class ProofPanel(BasePanel):
         self.graph_scene = GraphScene()
         self.graph_scene.vertices_moved.connect(self._vert_moved)
         self.graph_scene.vertex_double_clicked.connect(self._vert_double_clicked)
+        self.graph_scene.edge_double_clicked.connect(self._edge_double_clicked)
 
         self.graph_view = ProofGraphView(self.graph_scene)
         self.splitter.addWidget(self.graph_view)
@@ -428,6 +429,12 @@ class ProofPanel(BasePanel):
         basicrules.color_change(new_g, v)
         cmd = AddRewriteStep(self.graph_view, new_g, self.step_view, "color change")
         self.undo_stack.push(cmd)
+
+    def _edge_double_clicked(self, e: ET) -> None:
+        edge_st = self.graph.edge_st(e)
+        v0 = edge_st[0]
+        v1 = edge_st[1]
+        # here successfully detects edge double-clicking
 
     def _refresh_rewrites_model(self) -> None:
         refresh_custom_rules()

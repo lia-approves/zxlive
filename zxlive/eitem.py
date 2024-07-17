@@ -117,6 +117,11 @@ class EItem(QGraphicsPathItem):
 
         return super().itemChange(change, value)
 
+    def mouseDoubleClickEvent(self, e: QGraphicsSceneMouseEvent) -> None:
+        super().mouseDoubleClickEvent(e)
+        scene = self.scene()
+        if TYPE_CHECKING: assert isinstance(scene, GraphScene)
+        scene.edge_double_clicked.emit(self.e)
 
     def mousePressEvent(self, e: QGraphicsSceneMouseEvent) -> None:
         super().mousePressEvent(e)

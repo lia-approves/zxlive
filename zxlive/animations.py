@@ -227,7 +227,6 @@ def strong_comp(before: GraphT, after: GraphT, target: VT, scene: GraphScene) ->
     return morph_graph(before, after, scene, to_start=lambda _: target,
                        to_end=lambda _: None, duration=150, ease=QEasingCurve(QEasingCurve.Type.OutQuad))
 
-
 def back_to_default(it: VItem) -> None:
     """Stops all running animations on an VItem and animates all properties back to
     their default values."""

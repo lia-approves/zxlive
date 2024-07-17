@@ -34,6 +34,9 @@ class GraphScene(QGraphicsScene):
 
     g: GraphT
 
+    # Signal to handle double-clicking of edges.
+    edge_double_clicked = Signal(object)  # Actual type: ET
+
     # Signals to handle double-clicking and moving of vertices.
     # Note that we have to set the argument types to `object`,
     # otherwise it doesn't work for some reason...
